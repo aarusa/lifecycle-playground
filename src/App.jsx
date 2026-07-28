@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LifecycleLogger from "./components/LifecycleLogger";
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
       <button className="primary-btn" onClick={() => setShowLogger(!showLogger)}>
           {showLogger ? 'Unmount Logger': 'Mount Logger'}
       </button>
-      { showLogger && <div>Lifecycle Logger Here</div>}
+      { showLogger && <LifecycleLogger />}
     </div>
   );
 }
