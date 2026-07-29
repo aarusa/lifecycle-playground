@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import LifecycleLoggerClass from "./components/LifecycleLoggerClass";
 import LifecycleLogger from "./components/LifecycleLogger";
 
 function App() {

@@ -1,45 +1,38 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 
-class LifecycleLogger extends Component {
+const LifecycleLogger = () => {
 
-    constructor(props){
-        super(props);
-        // console.log('Component init...')
-        this.state = {
-            count: 0,
-        };
-    }
+    const [count, setCount] = useState(0);
 
-    componentDidMount() {
-        console.log("Component mounted...");
-    }
+    // componentDidMount
+    useEffect(() => {
+        console.log("Component mounted...")
 
-    componentDidUpdate(prevProps, prevState) {
-        if(prevState.count !== this.state.count){
-            console.log("Component Updated...", this.state.count);
+        return () => {
+            console.log('Component unmount...');
         }
+    }, []);
+
+    // componentDidUpdate
+    useEffect(() => {
+        if(count>0){
+            console.log("Component updated...")
+        }
+    }, [count]);
+
+    const incrementCount = () => {
+        setCount((prevCount) => prevCount + 1);
     }
 
-    componentWillUnmount() {
-        console.log('Component unmount...');
-    }
-
-    incrementCount = () => {
-        this.setState((prevState) => ({
-            count: prevState.count + 1,
-        }));
-    }
-
-    render() {
-        return(
-            <div className="logger-container">
-                <h2>Lifecycle Logger (Class component)</h2>
-                {/* <p>{ this.props.message }</p> */}
-                <p>Count: {this.state.count}</p>
-                <button onClick={this.incrementCount} className="secondary-btn">Update</button>
-            </div>
-        );
-    }
+    return ( 
+        <div className="logger-container">
+            <h2>Lifecycle Logger (Function Component)</h2>
+            <p>Count: {count}</p>
+            <button onClick={incrementCount} className="secondary-btn">
+                Update
+            </button>
+        </div>
+     );
 }
-
+ 
 export default LifecycleLogger;
