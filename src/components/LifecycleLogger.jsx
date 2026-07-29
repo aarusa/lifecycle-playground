@@ -14,6 +14,16 @@ class LifecycleLogger extends Component {
         console.log("Component mounted...");
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.state.count){
+            console.log("Component Updated...", this.state.count);
+        }
+    }
+
+    componentWillUnmount() {
+        console.log('Component unmount...');
+    }
+
     incrementCount = () => {
         this.setState((prevState) => ({
             count: prevState.count + 1,
