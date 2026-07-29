@@ -11,7 +11,7 @@ function App() {
       <button className="primary-btn" onClick={() => setShowLogger(!showLogger)}>
           {showLogger ? 'Unmount Logger': 'Mount Logger'}
       </button>
-      { showLogger && <LifecycleLogger />}
+      { showLogger && <LifecycleLogger message='Hello props' />}
     </div>
   );
 }
